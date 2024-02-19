@@ -16,8 +16,8 @@ const convert = async (files: FileList[]) => {
     console.log(源扫描表格文件!);
     const workBook = new Workbook();
     await workBook.xlsx.load(await 源扫描表格文件!.arrayBuffer());
-    workBook.getWorksheet(1)?.eachRow((row, rIndex)=>{
-        if(rIndex > 1){
+    workBook.getWorksheet(1)?.eachRow((row, rIndex)=> {
+        if(rIndex > 1) {
             console.log(row.getCell('A').value)
         }
     })
