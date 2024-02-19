@@ -1,0 +1,22 @@
+{
+  "name": "exeo-dev",
+  "version": "1.0.0",
+  "author": "",
+  "main": "index.ts",
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  },
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
+  "scripts": {
+    "dev": "bun index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
