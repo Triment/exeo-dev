@@ -128,6 +128,7 @@ const convert = async (files: FileList[]) => {
         targetRow.getCell('M').value = row.getCell('D').value;//包装
         targetRow.getCell('T').value = row.getCell('E').value;//保价
         targetRow.getCell('U').value = row.getCell('F').value;//保价货物类型
+        targetRow.getCell('L').value = row.getCell('G').value ? row.getCell('G').value: targetRow.getCell('L').value;//保价货物类型
     })
     const newBuff = await importWorkBook.xlsx.writeBuffer();
     const file = new File([newBuff], "运单导入表格.xlsx", { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
