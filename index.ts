@@ -110,21 +110,32 @@ const convert = async (files: FileList[]) => {
             tempMap[tmpRow.getCell('B').value as string] = tmpRIndex;
         }
     })
+    //合并数据
+    postMessage({
+        type: 'progress',
+        payload: {
+            type: 'process',
+            payload: 80
+        }
+    })
     scanWorkSheet!.eachRow((row, rIndex) => {
         if (rIndex <= 1) {
             return;
         }
-
         let targetRow = templateSheet?.findRow(tempMap[row.getCell('A').value as string])!;
         targetRow.getCell('O').value = row.getCell('B').value;//重量
         targetRow.getCell('P').value = row.getCell('C').value;//体积
         targetRow.getCell('M').value = row.getCell('D').value;//包装
         targetRow.getCell('T').value = row.getCell('E').value;//保价
         targetRow.getCell('U').value = row.getCell('F').value;//保价货物类型
+        targetRow.getCell('L').value = row.getCell('G').value ? row.getCell('G').value: targetRow.getCell('L').value;//保价货物类型
     })
     const newBuff = await importWorkBook.xlsx.writeBuffer();
-    const file = new File([newBuff], "xx.xlsx", { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-    await Bun.write("./middle.xlsx", file);
+    const file = new File([newBuff], "运单导入表格.xlsx", { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    postMessage({
+        type: 'result',
+        payload: [file]
+    });//提交结果
 }
 
 
