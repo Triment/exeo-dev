@@ -1,5 +1,5 @@
 Bun.build({
-    entrypoints: ['./index.ts'],
+    entrypoints: ['./index.ts', 'reword.ts'],
     outdir: './out',
     minify: {
       whitespace: false,
